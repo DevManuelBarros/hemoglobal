@@ -48,7 +48,7 @@ class turno(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     asistio = models.CharField(max_length=2, choices=SI_NO, default='No')
-    obra_social_id = models.ForeignKey(obra_social, on_delete=models.CASCADE)
+    obra_social_id = models.ForeingKey(obra_social, on_delete=models.CASCADE)
     tipo_celular_1 = models.CharField(max_length=20, choices=TIPO_TELEFONO, default='CP')
     telefono1 = models.CharField(max_length=50)
     tipo_celular_2 = models.CharField(max_length=20, choices=TIPO_TELEFONO, default='CP')
