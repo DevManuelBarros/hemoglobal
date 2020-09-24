@@ -1,0 +1,48 @@
+{% extends '../base.html' %}
+
+
+
+{% block cuerpo %}
+
+{% if object_list %}
+<div class="main-card mb-3 card">
+	<div class="card-body">
+		<h5 class="card-title">Listado de Obra Sociales</h5>
+		<table class="table table-hover table-fixed">
+			<tr>
+                <th>Id</th>
+				<th>Nombre</th>
+                <th>Telefono</th>
+                <th>Cuit</th>
+                <th>Dirección</th>
+                <th><a>Actualizar</a></th>
+			</tr>
+			{% for obra_social in object_list %}
+			<tr>
+                <td>
+                    {{ obra_social.id }}
+                </td>
+				<td>
+					{{ obra_social }}
+				</td>
+                <td>
+                    {{ obra_social.telefono }}
+                </td>
+                <td>
+                    {{ obra_social.cuit }}
+                </td>
+                <td>
+                    {{ obra_social.direccion }}
+                </td>
+                <td>
+                    <a href="{% url 'agenda:obra_social_update' pk=obra_social.id %}">Actualizar</a>
+                </td>
+			</tr>
+			{% endfor %} {% else %}
+			<p>No hay registros para mostrar.</p>
+			{% endif %}
+		</table>
+	</div>
+</div>
+
+{% endblock %}

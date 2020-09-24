@@ -10,9 +10,14 @@ from django.urls import reverse_lazy
 # imports app
 from .forms import especialidad_form
 from .forms import medicos_form
+from .forms import obra_social_form
+from .forms import turno_form
+
 
 from .models import especialidad
 from .models import medicos
+from .models import obra_social
+from .models import turno
 
 #---------------------------------------
 # Especialidad
@@ -21,25 +26,72 @@ from .models import medicos
 class especialidad_create(LoginRequiredMixin, CreateView):
 	form_class = especialidad_form
 	template_name = 'agenda/especialidad_create.html'
-	success_url = reverse_lazy('index')
+	success_url = reverse_lazy('agenda:especialidad_list')
 
 
 class especialidad_list(LoginRequiredMixin, ListView):
 	model = especialidad
 
-class especialidad_detail(LoginRequiredMixin, DetailView):
-	model = especialidad
-
 class especialidad_update(LoginRequiredMixin, UpdateView):
-	pass
+	model = especialidad
+	form_class = especialidad_form
+	template_name = 'agenda/especialidad_update.html'
+	success_url = reverse_lazy('agenda:especialidad_list')
 
 #-----------------------------------------
 # Medicos
 #-----------------------------------------
 
-class medicos_form(LoginRequiredMixin, CreateView):
-	template_name = 'agenda/especialidad_create.html'
-	forms_class = medicos_form
-	success_url = reverse_lazy('index')
+class medicos_create(LoginRequiredMixin, CreateView):
+	template_name = 'agenda/medicos_create.html'
+	form_class = medicos_form
+	success_url = reverse_lazy('agenda:medicos_list')
 
+class medicos_list(LoginRequiredMixin, ListView):
+	model = medicos
 
+class medicos_update(LoginRequiredMixin, UpdateView):
+	model = medicos
+	template_name = 'agenda/medicos_update.html'
+	form_class = medicos_form
+	success_url = reverse_lazy('agenda:medicos_list')
+
+#-----------------------------------------
+# Obra Social
+#-----------------------------------------
+
+class obra_social_create(LoginRequiredMixin, CreateView):
+	template_name = 'agenda/obra_social_create.html'
+	form_class = obra_social_form
+	success_url = reverse_lazy('agenda:obra_social_list')
+
+class obra_social_list(LoginRequiredMixin, ListView):
+	model = obra_social
+
+class obra_social_update(LoginRequiredMixin, UpdateView):
+	model = obra_social
+	template_name = 'agenda/obra_social_update.html'
+	form_class = obra_social_form
+	success_url = reverse_lazy('agenda:obra_social_list')
+
+#---------------------------------------
+# Turnos
+#---------------------------------------
+
+class turno_create(LoginRequiredMixin, CreateView):
+	template_name = 'agenda/turno_create.html'
+	form_class = turno_form
+	success_url = reverse_lazy('agenda:turno_list')
+
+class turno_list(LoginRequiredMixin, ListView):
+	model = turno
+
+class turno_update(LoginRequiredMixin, UpdateView):
+	model = turno
+	template_name = 'agenda/turno_update.html'
+	form_class = turno_form
+	success_url = reverse_lazy('agenda:turno_list')
+
+class turno_detail(LoginRequiredMixin, DetailView):
+	model = turno
+	template_name = 'agenda/turno_detail.html'

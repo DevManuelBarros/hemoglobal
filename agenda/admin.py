@@ -1,9 +1,13 @@
 from django.contrib import admin
-from .models import especialidad, medicos, obra_social, turno  
+from .models import especialidad
+from .models import medicos
+from .models import obra_social
+from .models import turno
+from .models import usuario
 
 
 admin.site.register(especialidad)
 admin.site.register(medicos)
 admin.site.register(obra_social)
 admin.site.register(turno)
-
+admin.site.register(usuario)

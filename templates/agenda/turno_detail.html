@@ -1,0 +1,98 @@
+{% extends '../base.html' %}
+
+{% block cuerpo %}
+{% if object %}
+<div class="main-card mb-3 card">
+	<div class="card-body">
+		<h5 class="card-title">Listado de Turnos</h5>
+		<table class="table table-hover table-fixed">
+			<tr>
+                <th>Campo</th>
+				<th>Detalle</th>
+                <th>Acciones</th>
+			</tr>
+			<tr>
+                <td>Turno:</td>
+                <td>
+                    {{ object.id }}
+                </td>
+                <td>.</td>
+            </tr>
+            <tr>
+                <td>Fecha Creación:</td>
+                <td>
+                    {{ object.fecha_creacion}}
+                </td>
+                <td>.</td>
+            </tr>
+            <tr>
+                <td>Apellido, Nombre:</td>
+				<td>
+					{{ object.apellido }}, {{ object.nombre}}
+				</td>
+                <td>.</td>
+            </tr>
+            <tr>
+                <td>Obra Social (N°Afiliado):</td>
+                <td>
+                    {{ object.obra_social_id.nombre }} ({{ object.numero_de_afiliado }})
+                </td>
+                <td>.</td>
+            </tr>
+            <tr>
+                <td>Medico:</td>
+                <td>
+                    {{ object.medicos_id}}
+                </td>
+                <td>.</td>
+            </tr>
+            <tr>
+                <td>Fecha del Turno:</td>
+                <td>
+                    {{ object.fecha_turno }}
+                </td>
+                <td>.</td>
+            <tr>
+                <td>Teléfonos:</td>
+                <td>
+                    {{ object.telefono1 }} - {{ object.telefono2 }}
+                </td>
+                <td>.</td>
+            </tr>
+            <tr>
+                <td>Observaciones:</td>
+                <td>
+                    {{ object.observaciones }}
+                </td>
+                <td>.</td>
+            </tr>
+            <tr>
+                <td>Asignado:</td>
+                <td>
+                    {{ object.asignado }}
+                </td>
+                <td>.</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>
+                    {{ object.email }}
+                </td>
+                <td>.</td>
+            </tr>
+            <tr>
+                <td>Asistio:</td>
+                <td>
+                    {{ object.asistio }}
+                </td>
+                <td>
+                    <a href="#">Cambiar Estado</a>
+                </td>
+			</tr>
+			{% else %}
+			<p>No existe el registro.</p>
+			{% endif %}
+		</table>
+	</div>
+</div>
+{% endblock %}

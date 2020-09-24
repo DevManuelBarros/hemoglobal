@@ -1,0 +1,37 @@
+{% extends '../base.html' %}
+
+
+
+{% block cuerpo %}
+
+{% if object_list %}
+<div class="main-card mb-3 card">
+	<div class="card-body">
+		<h5 class="card-title">Listado de especialidades disponibles</h5>
+		<table class="table table-hover table-fixed">
+			<tr>
+                <th>Id</th>
+				<th>Especialidad</th>
+                <th><a>Actualizar</a></th>
+			</tr>
+			{% for especialidad in object_list %}
+			<tr>
+                <td>
+                    {{ especialidad.id }}
+                </td>
+				<td>
+					{{ especialidad.nombre }}
+				</td>
+                <td>
+                    <a href="{% url 'agenda:especialidad_update' pk=especialidad.id %}">Actualizar</a>
+                </td>
+			</tr>
+			{% endfor %} {% else %}
+			<p>No hay registros para mostrar.</p>
+			{% endif %}
+		</table>
+	</div>
+</div>
+
+
+{% endblock %}

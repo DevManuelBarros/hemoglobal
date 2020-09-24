@@ -1,17 +1,209 @@
+{% load static %}
 <!doctype html>
 <html lang="es">
 	<head>
 		<title>Agenda Hemoglobal</title>
-			<!-- BootstrapCDN -->
-			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-			<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-			<!-- fin bootstrap -->
+			{% include "./utils/base_cabecera.html" %}
+    		{% include "./utils/base_pie.html" %}
 	</head>
-	<body>
-		{% block cuerpo %}
-		{% endblock %}
-	</body>
+<body>
+<!-- app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header -->
+    {% if user.is_authenticated %}
+            <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+    
+    {% else %}
+        <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header closed-sidebar">
+    
+    {% endif %}
+        <div class="app-header header-shadow">
+            <div class="app-header__logo">
+                <div class="logo-src"></div>
+                <div class="header__pane ml-auto">
+                    <div>
+                        <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="app-header__mobile-menu">
+                <div>
+                    <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="app-header__menu">
+                <span>
+                    <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                        <span class="btn-icon-wrapper">
+                            <i class="fa fa-ellipsis-v fa-w-6"></i>
+                        </span>
+                    </button>
+                </span>
+            </div>    <div class="app-header__content">
+                <div class="app-header-left">
+                                               {% if user.is_authenticated %}
+                   
+       
+                 {% endif %}   
+                 </div>
+                <div class="app-header-right">
+                    <div class="header-btn-lg pr-0">
+                        <div class="widget-content p-0">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <div class="btn-group">
+                                        	
+                                        	
+    {% if user.is_authenticated %}
+     <p>Usuario:  {{ user.get_username }}</p>
+     <p><a href="#">Cerrar Sesión</a></p>   
+   {% else %}
+     <p><a href="#">Ingresar</a></p>   
+   {% endif %} 
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>        </div>
+            </div>
+        </div>       
+               <div class="app-main">
+                <div class="app-sidebar sidebar-shadow">
+                    <div class="app-header__logo">
+                        <div class="logo-src"></div>
+                        <div class="header__pane ml-auto">
+                            <div>
+                            	<!-- hamburger close-sidebar-btn hamburger--elastic is-active -->
+                            	  {% if user.is_authenticated %}
+                            	<button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                            	{% else %}
+                                <button type="button" class="hamburger close-sidebar-btn hamburger--elastic is-active" data-class="closed-sidebar">
+                                {% endif %}
+                                    <span class="hamburger-box">
+                                        <span class="hamburger-inner"></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-header__mobile-menu">
+                        <div>
+                            <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="app-header__menu">
+                        <span>
+                            <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                                <span class="btn-icon-wrapper">
+                                    <i class="fa fa-ellipsis-v fa-w-6"></i>
+                                </span>
+                            </button>
+                        </span>
+                    </div>    <div class="scrollbar-sidebar">
+                        <div class="app-sidebar__inner">
+                            {% if user.is_authenticated %}
+                        
+                            <ul class="vertical-nav-menu">
+                                <li class="app-sidebar__heading">Dashboards</li>
+                                  <li>
+                                     <a href="#" class="mm-active">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        Agenda
+                                    </a>
+                                </li>
+                               <!-- <li class="app-sidebar__heading">UI Components</li> -->
+                                <li>
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-monitor"></i>
+                                        Datos Basicos
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                    	<li><i class="pe-7s-settings">Especialidades</i></li>
+                                        <li>
+                                            <a href="{% url 'agenda:especialidad_create'%}">
+                                                <i class="metismenu-icon"></i>
+                                                Crear Especialidad
+                                            </a>
+                                        </li>
+                                         <li>
+                                            <a href="{% url 'agenda:especialidad_list' %}">
+                                                <i class="metismenu-icon"></i>
+                                                Listar Especialidades
+                                            </a>
+                                        </li>
+                                    	<li><i class="pe-7s-settings">Medicos</i></li>
+                                         <li>
+                                            <a href="{% url 'agenda:medicos_create'%}">
+                                                <i class="metismenu-icon"></i>
+                                                Crear Medico
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'agenda:medicos_list' %}">
+                                                <i class="metismenu-icon"></i>
+                                                Listar Medicos
+                                            </a>
+                                        </li>
+                                    	<li><i class="pe-7s-settings">Obra Social</i></li>
+                                          <li>
+                                            <a href="{% url 'agenda:obra_social_create' %}">
+                                                <i class="metismenu-icon"></i>
+                                                Crear Obra Social
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'agenda:obra_social_list' %}">
+                                                <i class="metismenu-icon"></i>
+                                                Listar Obra Social
+                                            </a>
+                                        </li>
+                                        <li><i class="pe-7s-settings">Turnos</i></li>
+                                                                           <li>
+                                            <a href="{% url 'agenda:turno_create'%}">
+                                                <i class="metismenu-icon"></i>
+                                                Crear Turno
+                                            </a>
+                                        </li>
+										<li>
+                                            <a href="{% url 'agenda:turno_list'%}">
+                                                <i class="metismenu-icon"></i>
+                                                Listar Turno
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    
+
+
+                                          
+                            </ul>
+
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>    <div class="app-main__outer">
+                <div class="app-main__inner">
+                
+			{% block cuerpo %}
+			
+			
+			{% endblock %}
+			</div>
+    </div>
+        </div>
+    </div>
+
+</body>
 
 </html>

@@ -1,0 +1,52 @@
+{% extends '../base.html' %}
+
+
+
+{% block cuerpo %}
+
+{% if object_list %}
+<div class="main-card mb-3 card">
+	<div class="card-body">
+		<h5 class="card-title">Listado de Turnos</h5>
+		<table class="table table-hover table-fixed">
+			<tr>
+                <th>Id</th>
+				<th>Nombre Paciente</th>
+                <th>Turno</th>
+                <th>Telefono principal</th>
+                <th>Asistio</th>
+                <th>Detalles</th>
+                <th><a>Modificar</a></th>
+			</tr>
+			{% for turno in object_list %}
+			<tr>
+                <td>
+                    {{ turno.id }}
+                </td>
+				<td>
+					{{ turno.apellido }}, {{ turno.nombre}}
+				</td>
+                <td>
+                    {{ turno.fecha_turno }}
+                </td>
+                <td>
+                    {{ turno.telefono1 }}
+                </td>
+                <td>
+                    {{ turno.asistio }}
+                </td>
+                <td>
+                     <a href="{% url 'agenda:turno_detail' pk=turno.id %}">Detalles</a>
+                </td>
+                <td>
+                    <a href="{% url 'agenda:turno_update' pk=turno.id %}">Modificar</a>
+                </td>
+			</tr>
+			{% endfor %} {% else %}
+			<p>No hay registros para mostrar.</p>
+			{% endif %}
+		</table>
+	</div>
+</div>
+
+{% endblock %}
