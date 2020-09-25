@@ -62,9 +62,9 @@
                                         	
     {% if user.is_authenticated %}
      <p>Usuario:  {{ user.get_username }}</p>
-     <p><a href="#">Cerrar Sesión</a></p>   
+     <p><a href="{% url 'users:logout' %}">Cerrar Sesión</a></p>   
    {% else %}
-     <p><a href="#">Ingresar</a></p>   
+     <p><a href="{% url 'users:login' %}">Ingresar</a></p>   
    {% endif %} 
 
                                     </div>

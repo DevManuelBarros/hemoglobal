@@ -4,12 +4,13 @@ from django.contrib.auth import logout as do_logout
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as do_login
+from django.urls import reverse_lazy
 
 def welcome(request):
     # si estamos identificado devolvemos la portada
     if request.user.is_authenticated:
         return render(request, 'users/welcome.html')
-    return redirect('/users/login')
+    return redirect('users/login')
 
 def login(request):
     # Creamos un formulario de authenticación vacio
@@ -36,6 +37,6 @@ def logout(request):
     # Finalización de la sesión
     do_logout(request)
     # Regresamos a la pagina de inicio.
-    return redirect('users/login')
+    return redirect('../login')
 
 
