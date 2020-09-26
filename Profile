@@ -1,1 +1,1 @@
-web: gunicorn hemoglobal.wsgi --log-file -
+web: gunicorn hemoglobal.wsgi
