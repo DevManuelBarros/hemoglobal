@@ -17,7 +17,8 @@ from .views import turno_create
 from .views import turno_list
 from .views import turno_update
 from .views import turno_detail
-
+# ajax
+from .ajax import cambiar_estado_turno
 
 urlpatterns = [
                 # especialidad
@@ -37,5 +38,7 @@ urlpatterns = [
                 path('turno/list/', turno_list.as_view(), name='turno_list'),
                 path('turno/update/<int:pk>', turno_update.as_view(), name='turno_update'),
                 path('turno/detail/<int:pk>', turno_detail.as_view(), name='turno_detail'),
+                # ajax
+                path('cambiar_estado_turno/', cambiar_estado_turno, name='cambiar_estado_turno'),
 
         ]
