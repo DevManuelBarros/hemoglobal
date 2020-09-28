@@ -1,4 +1,18 @@
 from django.db import models
+from datetime import datetime
+from datetime import timedelta
+
+
+#------------------------------
+# Cumston QuerySet
+#------------------------------
+
+class turno_manager(models.Manager):
+	def proximos_turnos(self):
+		ahora = datetime.utcnow()
+		turnos = self.filter(fecha_turno__gte=ahora, fecha_turno__lte=ahora + timedelta(days=7))
+		return turnos
+
 
 #------------------------------
 # Variables de Opciones
@@ -64,3 +78,4 @@ class turno(models.Model):
     observaciones = models.CharField(max_length=250)
     medicos_id = models.ForeignKey(medicos, on_delete=models.CASCADE)
     asignado = models.ForeignKey(usuario, on_delete=models.CASCADE, blank=True)
+    objects = turno_manager()
