@@ -10,7 +10,7 @@ from .views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
+    path('', index.as_view(), name='index'),
     path('accounts/', include(('users.urls', 'users'), namespace='users')),
     path('agenda/', include(('agenda.urls', 'agenda'), namespace='agenda')),
     ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -14,6 +14,7 @@
 				<th>Nombre Paciente</th>
                 <th>Turno</th>
                 <th>Telefono principal</th>
+                <th>Medico</th>
                 <th>Asistio</th>
                 <th>Detalles</th>
                 <th><a>Modificar</a></th>
@@ -31,6 +32,9 @@
                 </td>
                 <td>
                     {{ turno.telefono1 }}
+                </td>
+                <td>
+                  {{ turno.medicos_id }}
                 </td>
                 <td>
                     {{ turno.asistio }}
