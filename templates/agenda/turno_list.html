@@ -13,25 +13,29 @@
                 <th>Id</th>
 				<th>Nombre Paciente</th>
                 <th>Turno</th>
-                <th>Telefono principal</th>
                 <th>Medico</th>
                 <th>Asistio</th>
                 <th>Detalles</th>
-                <th><a>Modificar</a></th>
+                <th>Modificar</th>
+                <th>Clip_Msj</th>
+                <th>Enviar Email</th>
 			</tr>
 			{% for turno in object_list %}
+            <input id="turno_{{ turno.id }}" style="position:absolute; left: -9999px" value="Le informamos que su turno con el Dr/Dra {{turno.medicos_id }} será en la fecha: {{ turno.fecha_turno }} en Aguilar 2595, piso 2 Dpto B, CABA.
+            Le solicitamos confirmar la recepción de este mensaje y la asistencia al turno.
+            Le recordamos que ante la situación que atravesamos actualmente (Covid19) no se podrá asistir al consultorio con acompañante.
+            Es obligatorio el uso de BARBIJO/TAPABOCA‼️.
+            Lo saluda atentamente el Equipo de Hemoglobal Servicie." />
+            <div id="email_{{ turno.id }}" style="display: none;">{{ turno.paciente_id.email }}</div>
 			<tr>
                 <td>
                     {{ turno.id }}
                 </td>
-				<td>
-					{{ turno.apellido }}, {{ turno.nombre}}
+				<td id="paciente_{{ turno.id }}">
+					{{ turno.paciente_id }}
 				</td>
                 <td>
                     {{ turno.fecha_turno }}
-                </td>
-                <td>
-                    {{ turno.telefono1 }}
                 </td>
                 <td>
                   {{ turno.medicos_id }}
@@ -45,6 +49,12 @@
                 <td>
                     <a href="{% url 'agenda:turno_update' pk=turno.id %}">Modificar</a>
                 </td>
+                <td>
+                    <a href="#" class="generar_mensaje">turno_{{ turno.id }}</a>
+                </td>
+                <td>
+                    <a href="#" class="enviar_email">email_{{ turno.id }}</a>
+                </td>
 			</tr>
 			{% endfor %} {% else %}
 			<p>No hay registros para mostrar.</p>
@@ -52,5 +62,5 @@
 		</table>
 	</div>
 </div>
-
+{% include './js/turno_list.js' %}
 {% endblock %}

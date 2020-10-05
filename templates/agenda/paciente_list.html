@@ -1,0 +1,57 @@
+{% extends '../base.html' %}
+
+
+
+{% block cuerpo %}
+
+{% if object_list %}
+<div class="main-card mb-3 card">
+	<div class="card-body">
+		<h5 class="card-title">Listado de Turnos</h5>
+		<table class="table table-hover table-fixed">
+			<tr>
+                <th>Id</th>
+				<th>Nombre Paciente</th>
+                <th>DNI</th>
+
+                <th>Obra Social</th>
+                <th>Número Afiliado</th>
+                <th>Teléfono</th>
+                <th>Detalles</th>
+                <th><a>Modificar</a></th>
+			</tr>
+			{% for paciente in object_list %}
+			<tr>
+                <td>
+                    {{ paciente.id }}
+                </td>
+				<td>
+					{{ paciente }}
+				</td>
+                <td>
+                    {{ paciente.dni }}
+                </td>
+                <td>
+                  {{ paciente.obra_social_id.nombre }}
+                </td>
+                <td>
+                    {{ paciente.telefono1 }}
+                </td>
+                <td>
+                    {{ paciente.numero_de_afiliado }}
+                </td>
+                <td>
+                     <a href="{% url 'agenda:paciente_detail' pk=paciente.id %}">Detalles</a>
+                </td>
+                <td>
+                    <a href="{% url 'agenda:paciente_update' pk=paciente.id %}">Modificar</a>
+                </td>
+			</tr>
+			{% endfor %} {% else %}
+			<p>No hay registros para mostrar.</p>
+			{% endif %}
+		</table>
+	</div>
+</div>
+
+{% endblock %}

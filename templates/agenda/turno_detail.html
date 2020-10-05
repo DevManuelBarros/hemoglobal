@@ -1,5 +1,4 @@
 {% extends '../base.html' %}
-
 {% block cuerpo %}
 {% if object %}
 <div class="main-card mb-3 card">
@@ -28,14 +27,14 @@
             <tr>
                 <td>Apellido, Nombre:</td>
 				<td>
-					{{ object.apellido }}, {{ object.nombre}}
+					{{ object.paciente_id }}
 				</td>
                 <td>.</td>
             </tr>
             <tr>
                 <td>Obra Social (N°Afiliado):</td>
                 <td>
-                    {{ object.obra_social_id.nombre }} ({{ object.numero_de_afiliado }})
+                    {{ object.paciente_id.obra_social_id }} ({{ object.paciente_id.numero_de_afiliado }})
                 </td>
                 <td>.</td>
             </tr>
@@ -55,7 +54,7 @@
             <tr>
                 <td>Teléfonos:</td>
                 <td>
-                    {{ object.telefono1 }} - {{ object.telefono2 }}
+                    {{ object.paciente_id.telefono1 }} - {{ object.paciente_id.telefono2 }}
                 </td>
                 <td>.</td>
             </tr>
@@ -64,7 +63,9 @@
                 <td>
                     {{ object.observaciones }}
                 </td>
-                <td>.</td>
+                <td>
+                    <button class="btn btn-primary" id="btn_agregar_info">Agregar info</button>
+                </td>
             </tr>
             <tr>
                 <td>Asignado:</td>
@@ -76,7 +77,7 @@
             <tr>
                 <td>Email:</td>
                 <td>
-                    {{ object.email }}
+                    {{ object.paciente_id.email }}
                 </td>
                 <td>.</td>
             </tr>

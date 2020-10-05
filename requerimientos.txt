@@ -1,0 +1,26 @@
+--------------------------------------------------
+Pendientes
+--------------------------------------------------
+
+
+3 Poder volcar que surgió de la consulta  (informe consulta) (¿cómo hacerlo?) (crear una tabla que sean de muchos campos a un paciente así traemos asociadas las anotaciones)
+2 Hojita Excel para exportar <--- esto es posterior al 3.
+
+
+--------------------------------------------------
+Otras cosas que habra que realizar.
+--------------------------------------------------
+
+a) Filtro a turnos y pacientes.
+b) poder acceder al historial.
+c) Filtrar por lo turnos que no tienen fecha para poder asignarlas.
+
+
+--------------------------------------------------
+Solicitudes terminadas
+--------------------------------------------------
+
+4 turnos sin fecha asignada <-- Terminado
+5 Envio de email <-- Terminado
+6 copiado del turno en portapapeles. <-- Terminado
+1 Listar por paciente para ver si historial <--- termino el listado de pacientes, crear consulta para ver las consulta que haya Terminado

@@ -12,12 +12,16 @@ from .forms import especialidad_form
 from .forms import medicos_form
 from .forms import obra_social_form
 from .forms import turno_form
+from .forms import paciente_form
+from .forms import informe_consulta_form
 
 
 from .models import especialidad
 from .models import medicos
 from .models import obra_social
 from .models import turno
+from .models import paciente
+from .models import informe_consulta
 
 #---------------------------------------
 # Especialidad
@@ -75,6 +79,29 @@ class obra_social_update(LoginRequiredMixin, UpdateView):
 	success_url = reverse_lazy('agenda:obra_social_list')
 
 #---------------------------------------
+# Paciente
+#---------------------------------------
+
+class paciente_create(LoginRequiredMixin, CreateView):
+	template_name = 'agenda/paciente_create.html'
+	form_class = paciente_form
+	success_url = reverse_lazy('agenda:paciente_list')
+
+class paciente_list(LoginRequiredMixin, ListView):
+	model = paciente
+
+class paciente_update(LoginRequiredMixin, UpdateView):
+	model = paciente
+	template_name = 'agenda/paciente_update.html'
+	form_class = paciente_form
+	success_url = reverse_lazy('agenda:paciente_list')
+
+class paciente_detail(LoginRequiredMixin, DetailView):
+	model = paciente
+	template_name = 'agenda/paciente_detail.html'
+
+
+#---------------------------------------
 # Turnos
 #---------------------------------------
 
@@ -95,3 +122,8 @@ class turno_update(LoginRequiredMixin, UpdateView):
 class turno_detail(LoginRequiredMixin, DetailView):
 	model = turno
 	template_name = 'agenda/turno_detail.html'
+
+#---------------------------------------
+# Informe consulta
+#---------------------------------------
+

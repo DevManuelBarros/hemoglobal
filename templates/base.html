@@ -9,10 +9,10 @@
 <body>
 <!-- app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header -->
     {% if user.is_authenticated %}
-            <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+            <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header overflow-auto">
     
     {% else %}
-        <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header closed-sidebar">
+        <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header closed-sidebar overflow-auto">
     
     {% endif %}
         <div class="app-header header-shadow">
@@ -130,7 +130,7 @@
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
                                     <ul>
-                                    	<li><i class="pe-7s-settings">Especialidades</i></li>
+                                    	<li><i class="pe-7s-settings">AMB Basico</i></li>
                                         <li>
                                             <a href="{% url 'agenda:especialidad_create'%}">
                                                 <i class="metismenu-icon"></i>
@@ -143,7 +143,6 @@
                                                 Listar Especialidades
                                             </a>
                                         </li>
-                                    	<li><i class="pe-7s-settings">Medicos</i></li>
                                          <li>
                                             <a href="{% url 'agenda:medicos_create'%}">
                                                 <i class="metismenu-icon"></i>
@@ -156,7 +155,6 @@
                                                 Listar Medicos
                                             </a>
                                         </li>
-                                    	<li><i class="pe-7s-settings">Obra Social</i></li>
                                           <li>
                                             <a href="{% url 'agenda:obra_social_create' %}">
                                                 <i class="metismenu-icon"></i>
@@ -167,6 +165,18 @@
                                             <a href="{% url 'agenda:obra_social_list' %}">
                                                 <i class="metismenu-icon"></i>
                                                 Listar Obra Social
+                                            </a>
+                                        </li>
+                                                                           <li>
+                                            <a href="{% url 'agenda:paciente_create'%}">
+                                                <i class="metismenu-icon"></i>
+                                                Crear Paciente
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'agenda:paciente_list'%}">
+                                                <i class="metismenu-icon"></i>
+                                                Listar Pacientes
                                             </a>
                                         </li>
                                         <li><i class="pe-7s-settings">Turnos</i></li>

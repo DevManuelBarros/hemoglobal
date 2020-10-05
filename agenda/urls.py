@@ -12,6 +12,11 @@ from .views import medicos_update
 from .views import obra_social_create
 from .views import obra_social_list
 from .views import obra_social_update
+# pacientes
+from .views import paciente_create
+from .views import paciente_list
+from .views import paciente_update
+from .views import paciente_detail
 # turnos
 from .views import turno_create
 from .views import turno_list
@@ -19,6 +24,8 @@ from .views import turno_update
 from .views import turno_detail
 # ajax
 from .ajax import cambiar_estado_turno
+from .ajax import enviar_email
+
 
 urlpatterns = [
                 # especialidad
@@ -33,6 +40,11 @@ urlpatterns = [
                 path('obra_social/create/', obra_social_create.as_view(), name='obra_social_create'),
                 path('obra_social/list/', obra_social_list.as_view(), name='obra_social_list'),
                 path('obra_social/update/<int:pk>', obra_social_update.as_view(), name='obra_social_update'),
+                # pacientes
+                path('paciente/create/', paciente_create.as_view(), name='paciente_create'),
+                path('paciente/list/', paciente_list.as_view(), name='paciente_list'),
+                path('paciente/update/<int:pk>', paciente_update.as_view(), name='paciente_update'),
+                path('paciente/detail/<int:pk>', paciente_detail.as_view(), name='paciente_detail'),
                 # turnos
                 path('turno/create/', turno_create.as_view(), name='turno_create'),
                 path('turno/list/', turno_list.as_view(), name='turno_list'),
@@ -40,5 +52,5 @@ urlpatterns = [
                 path('turno/detail/<int:pk>', turno_detail.as_view(), name='turno_detail'),
                 # ajax
                 path('cambiar_estado_turno/', cambiar_estado_turno, name='cambiar_estado_turno'),
-
+                path('enviar_email/', enviar_email, name='enviar_email'),
         ]

@@ -133,3 +133,11 @@ STATICFILES_DIRS = [
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Emails setting
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'dev.manuel.barros@gmail.com'
+EMAIL_HOST_PASSWORD = 'Manuel%100'
+EMAIL_PORT = 587
